@@ -200,7 +200,7 @@ exports.getPopularAndNewestNovels = async (req, res) => {
     try {
         const popularNovels = await Novel.findAll({
             order: [['views', 'DESC']],
-            limit: 5,
+            limit: 8,  // Increased to 8
         });
 
         const newestNovels = await Novel.findAll({

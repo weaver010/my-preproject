@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaMoon, FaSun, FaUser } from 'react-icons/fa';
 
 const Header = ({ isAuthenticated, setIsAuthenticated }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -10,11 +10,12 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsAuthenticated(false);
+        navigate('/');
     };
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        navigate(`/search?query=${searchQuery}`);
+        navigate(`/search?query=${searchQuery}`); // Redirect to the search results page
     };
 
     return (
@@ -41,8 +42,13 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
                         </>
                     ) : (
                         <>
-                            <a href="/login">Login</a>
-                            <a href="/signup">Sign Up</a>
+                            <FaUser size={20} />
+                            <div className="relative">
+                                <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl z-20">
+                                    <a href="/login" className="block px-4 py-2 text-gray-800 hover:bg-gray-400">Login</a>
+                                    <a href="/signup" className="block px-4 py-2 text-gray-800 hover:bg-gray-400">Sign Up</a>
+                                </div>
+                            </div>
                         </>
                     )}
                 </nav>

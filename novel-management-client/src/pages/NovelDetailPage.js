@@ -26,7 +26,7 @@ const NovelDetailPage = () => {
     return (
         <div className="container mx-auto py-8">
             <div className="flex flex-col items-center">
-                <img src={novel.coverImage} alt={novel.title} className="w-64 h-96 object-cover mb-4" />
+                <img src={`http://localhost:5000${novel.coverImage}`} alt={novel.title} className="w-64 h-96 object-cover mb-4" />
                 <h1 className="text-4xl font-bold mb-4">{novel.title}</h1>
                 <p className="text-lg mb-4">{novel.description}</p>
                 <h2 className="text-2xl font-bold mb-4">Chapters</h2>
